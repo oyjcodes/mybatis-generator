@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- 指定数据连接驱动jar地址 -->
+	<classPathEntry
+		location="D:\dev\repository\mysql\mysql-connector-java\8.0.11\mysql-connector-java-8.0.11.jar" />
+	<!-- 一个数据库一个context -->
+	<context id="context" defaultModelType="flat"
+		targetRuntime="MyBatis3">
+		<!-- 注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="false" /><!-- 是否取消注释 -->
+			<property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳 -->
+		</commentGenerator>
+
+		<!-- jdbc连接 -->
+		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/hrm_db?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai"
+			userId="root" password="1996">
+		</jdbcConnection>
+
+
+		<!-- 类型转换 -->
+		<javaTypeResolver>
+			<!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 生成实体类地址 -->
+		<javaModelGenerator targetPackage="com.oyj.pojo"
+			targetProject="src/main/java">
+			<!-- 是否在当前路径下新加一层schema,eg：false路径com.oyj.pojo， true:com.oyj.pojo.[schemaName] -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 生成mapxml文件 -->
+		<sqlMapGenerator targetPackage="com.oyj.mapper"
+			targetProject="src/main/java">
+			<!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- 生成mapper.xml对应dao接口 -->
+		<javaClientGenerator targetPackage="com.oyj.dao"
+			targetProject="src/main/java" type="XMLMAPPER">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+
+		<!-- 配置表信息 -->
+		<table tableName="dept_inf" domainObjectName="Dept"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 
+				是否生成 example类 -->
+
+			<!-- 忽略列，不生成bean 字段 -->
+			<!-- <ignoreColumn column="FRED" /> -->
+			<!-- 指定列的java数据类型 -->
+			<!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
+		</table>
+		<table tableName="document_inf" domainObjectName="Document"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+		</table>
+		<table tableName="employee_inf" domainObjectName="Employee"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+		</table>
+		<table tableName="job_inf" domainObjectName="Job"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+		</table>
+		<table tableName="notice_inf" domainObjectName="Notice"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+		</table>
+		<table tableName="user_inf" domainObjectName="User"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+		</table>
+
+	</context>
+</generatorConfiguration>
